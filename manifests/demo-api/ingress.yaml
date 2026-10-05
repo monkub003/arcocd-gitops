@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-api
+  namespace: demo
+  annotations:
+    # ให้ AWS Load Balancer Controller สร้าง ALB แบบเปิดสู่อินเทอร์เน็ต
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    # target-type ip = ส่งทราฟฟิกตรงไปที่ pod IP (เหมาะกับ VPC CNI)
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /healthz
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-api
+                port:
+                  number: 80
