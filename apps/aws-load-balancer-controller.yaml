@@ -16,8 +16,7 @@ spec:
           create: true
           name: aws-load-balancer-controller
           annotations:
-            # แทนที่ <ACCOUNT_ID> ด้วยค่าจาก: terraform output lbc_role_arn
-            eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/eks-lab-aws-lbc
+            eks.amazonaws.com/role-arn: arn:aws:iam::370081004865:role/eks-lab-aws-lbc
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
