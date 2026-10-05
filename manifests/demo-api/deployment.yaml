@@ -16,7 +16,7 @@ spec:
       containers:
         - name: demo-api
           # เปลี่ยน tag ตรงนี้ (เช่น v1 -> v2) เพื่อทดสอบ CI/CD ผ่าน GitOps
-          image: 370081004865.dkr.ecr.us-east-1.amazonaws.com/demo-api:v2
+          image: 370081004865.dkr.ecr.us-east-1.amazonaws.com/demo-api:v3
           ports:
             - containerPort: 8000
           readinessProbe:
